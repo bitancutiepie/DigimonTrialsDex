@@ -68,7 +68,7 @@ const App: React.FC = () => {
   };
 
   const handleDigimonInfoClick = useCallback((name: string, level: string, imageUrl: string, digimonNode: DigimonNode, incomingRequirements: string[]) => {
-    setSelectedDigimonForInfo({ 
+    setSelectedDigimonForInfo({
       name: name,
       level: level,
       imageUrl: imageUrl,
@@ -90,18 +90,20 @@ const App: React.FC = () => {
 
   return (
     <div className="flex h-screen bg-[#0f172a] text-slate-200 overflow-hidden selection:bg-cyan-500 selection:text-white relative font-digital">
-      
+
       {!isBooted && (
         <WelcomeLoadingScreen onEnter={() => setIsBooted(true)} />
       )}
 
+      <DigitalParticles />
+
       {/* Global Header: Fixed and z-50 to stay above everything else */}
       <header className="fixed top-0 left-0 right-0 h-16 lg:h-20 bg-cyan-700 border-b-4 border-slate-900 z-50 shadow-[0_4px_0_#0f172a] flex flex-col">
         <div className="absolute inset-0 bg-gradient-to-r from-white/5 to-transparent pointer-events-none"></div>
-        
+
         <div className="h-16 lg:h-full flex items-center justify-between px-4 lg:px-10 relative z-10 gap-3">
           <div className={`flex items-center gap-3 lg:gap-6 transition-opacity duration-200 ${showMobileSuggestions ? 'opacity-0 w-0 overflow-hidden sm:opacity-100 sm:w-auto' : 'opacity-100'}`}>
-            <button 
+            <button
               onClick={toggleSidebar}
               className={`lg:hidden p-2 border-2 border-slate-900 btn-flat flex items-center justify-center shrink-0 transition-all duration-200 ${isSidebarOpen ? 'bg-orange-500 text-white' : 'bg-white text-cyan-700'}`}
               aria-label={isSidebarOpen ? "Close Menu" : "Open Menu"}
@@ -112,7 +114,7 @@ const App: React.FC = () => {
             <div className="bg-slate-900 border-2 border-cyan-400 p-1.5 lg:p-2 rotate-3 hidden sm:block">
               <Terminal className="w-4 h-4 lg:w-6 lg:h-6 text-cyan-400 animate-pulse" />
             </div>
-            
+
             <div className="max-w-[120px] sm:max-w-none">
               <h2 className="text-xs lg:text-2xl font-black font-digital tracking-wider text-white drop-shadow-[2px_2px_0_#0f172a] truncate uppercase">
                 {selectedLine?.title.replace(' LINE', '') || 'SECTOR READY'}
@@ -123,7 +125,7 @@ const App: React.FC = () => {
           <div className={`relative flex-1 flex justify-end transition-all duration-300 ${showMobileSuggestions ? 'flex-[2]' : 'flex-1'}`} ref={mobileSearchRef}>
             <div className="relative w-full max-w-md">
               <Search className={`absolute left-2.5 top-1/2 -translate-y-1/2 w-4 h-4 transition-colors ${showMobileSuggestions ? 'text-cyan-400' : 'text-cyan-100/50'}`} />
-              <input 
+              <input
                 type="text"
                 value={searchQuery}
                 onFocus={() => setShowMobileSuggestions(true)}
@@ -138,16 +140,16 @@ const App: React.FC = () => {
                 `}
               />
               {searchQuery && (
-                <button 
+                <button
                   onClick={() => setSearchQuery('')}
                   className="absolute right-2.5 top-1/2 -translate-y-1/2 p-1 hover:text-cyan-400 text-slate-500"
                 >
                   <X className="w-4 h-4" />
                 </button>
               )}
-              <SearchSuggestions 
-                suggestions={predictions} 
-                onSelect={handlePredictiveSelect} 
+              <SearchSuggestions
+                suggestions={predictions}
+                onSelect={handlePredictiveSelect}
                 isVisible={showMobileSuggestions}
                 className="mt-2"
               />
@@ -155,13 +157,13 @@ const App: React.FC = () => {
           </div>
 
           <div className={`flex items-center gap-2 lg:gap-4 transition-opacity duration-200 ${showMobileSuggestions ? 'hidden sm:flex' : 'flex'}`}>
-            <button 
+            <button
               onClick={() => setIsNatureModalOpen(true)}
               className="lg:hidden p-2 bg-orange-500 border-2 border-slate-900 btn-flat flex items-center justify-center shrink-0"
             >
               <Info className="w-5 h-5 text-slate-900" />
             </button>
-            
+
             <div className="hidden lg:flex bg-orange-600 border-4 border-slate-900 px-4 py-2 items-center gap-3 shadow-[3px_3px_0_#0f172a]">
               <div className="w-2 h-2 bg-white rounded-full animate-ping"></div>
               <span className="text-white font-black text-xs uppercase tracking-widest">Connected</span>
@@ -177,15 +179,15 @@ const App: React.FC = () => {
         pt-16 lg:pt-0
       `}>
         {isSidebarOpen && (
-          <div 
-            className="absolute inset-0 bg-black/60 lg:hidden" 
+          <div
+            className="absolute inset-0 bg-black/60 lg:hidden"
             onClick={() => setIsSidebarOpen(false)}
           />
         )}
         <div className="relative w-80 h-full">
-          <Sidebar 
-            lines={evolutionLines} 
-            selectedLine={selectedLine} 
+          <Sidebar
+            lines={evolutionLines}
+            selectedLine={selectedLine}
             onSelect={handleSelectLine}
             onShowNatures={() => setIsNatureModalOpen(true)}
             search={searchQuery}
@@ -197,7 +199,6 @@ const App: React.FC = () => {
 
       {/* Main Content Area */}
       <main className="flex-1 flex flex-col relative overflow-hidden bg-[#0f172a] w-full pt-16 lg:pt-20">
-        <DigitalParticles />
 
         {showMobileSuggestions && (
           <div className="lg:hidden fixed inset-0 bg-slate-950/40 backdrop-blur-[2px] z-40 pointer-events-none"></div>
@@ -229,15 +230,15 @@ const App: React.FC = () => {
         </div>
       </main>
 
-      <NatureModal 
-        isOpen={isNatureModalOpen} 
-        onClose={() => setIsNatureModalOpen(false)} 
+      <NatureModal
+        isOpen={isNatureModalOpen}
+        onClose={() => setIsNatureModalOpen(false)}
       />
 
       <DigimonInfoModal
         isOpen={!!selectedDigimonForInfo}
         onClose={() => setSelectedDigimonForInfo(null)}
-        digimonInfo={selectedDigimonForInfo ? { ...selectedDigimonForInfo, id: 0 } : null} 
+        digimonInfo={selectedDigimonForInfo ? { ...selectedDigimonForInfo, id: 0 } : null}
       />
     </div>
   );

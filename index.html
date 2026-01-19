@@ -30,29 +30,31 @@
         box-shadow: 1px 1px 0px #1a202c;
       }
       
-      /* Floating Digital Bits */
+      /* Floating Binary Bits */
       @keyframes float-binary {
         0% { transform: translateY(110vh); opacity: 0; }
-        20% { opacity: 0.4; }
-        80% { opacity: 0.4; }
+        20% { opacity: 1; }
+        80% { opacity: 1; }
         100% { transform: translateY(-10vh); opacity: 0; }
       }
 
       .binary-bit {
         position: absolute;
-        color: rgba(0, 255, 255, 0.15);
+        color: #22d3ee;
         font-family: 'Orbitron', monospace;
-        font-size: 12px;
+        font-size: 14px;
+        font-weight: 700;
         pointer-events: none;
         animation: float-binary linear infinite;
         user-select: none;
+        text-shadow: 0 0 8px rgba(34, 211, 238, 0.5);
       }
 
       /* Floating Data Cube Animation */
       @keyframes float-up {
         0% { transform: translateY(110vh) rotate(0deg); opacity: 0; }
-        10% { opacity: 0.3; }
-        90% { opacity: 0.3; }
+        10% { opacity: 1; }
+        90% { opacity: 1; }
         100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
       }
 
@@ -60,6 +62,22 @@
         position: absolute;
         pointer-events: none;
         animation: float-up linear infinite;
+        box-shadow: 0 0 15px rgba(34, 211, 238, 0.2);
+      }
+
+      /* Data Stream Effect */
+      @keyframes stream-down {
+        0% { transform: translateY(-100vh); opacity: 0; }
+        10% { opacity: 1; }
+        90% { opacity: 1; }
+        100% { transform: translateY(110vh); opacity: 0; }
+      }
+
+      .data-stream {
+        position: absolute;
+        background: linear-gradient(to bottom, transparent, #22d3ee, transparent);
+        pointer-events: none;
+        animation: stream-down linear infinite;
       }
 
       /* Subtle Breathing Effect */
