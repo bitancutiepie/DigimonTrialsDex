@@ -44,6 +44,14 @@ Developed specifically for the Pokémon GBA ROM hack **"Digimon Trials"** by **F
       <td align="center"><b>Nature Attributes</b></td>
       <td align="center"><b>Mobile Optimization</b></td>
     </tr>
+    <tr>
+      <td width="50%"><img src="./images/excel_export.png" alt="Excel Export" width="100%"></td>
+      <td width="50%"><img src="./images/card_data.png" alt="Card Data" width="100%"></td>
+    </tr>
+    <tr>
+      <td align="center"><b>Excel Export Function</b></td>
+      <td align="center"><b>Detailed Card Data</b></td>
+    </tr>
   </table>
 </div>
 
