@@ -5,6 +5,9 @@
 
 A premium, interactive Digimon evolution guide and encyclopedia with a futuristic "Digital World" terminal aesthetic.
 
+Developed specifically for the Pokémon GBA ROM hack **"Digimon Trials"** by **Ferio Triforce**.
+
+
 <div align="center">
   <img src="./images/banner.png" alt="Digimon Trials Dex Banner" width="100%">
 </div>
